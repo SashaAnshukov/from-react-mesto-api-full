@@ -9,6 +9,7 @@ const userRoutes = require('./routes/users'); // импортируем роут
 const cardRoutes = require('./routes/cards'); // импортируем роуты карточек
 const errorHandler = require('./middleware/error-handler');
 const cors = require('cors');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundError = require('./errors/not-found-error');
 
 const { PORT = 3000 } = process.env;
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+app.use(requestLogger);
 app.use('/', userRoutes); // запускаем импортированные роуты
 app.use('/', cardRoutes); // запускаем импортированные роуты
 
