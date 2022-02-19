@@ -9,7 +9,7 @@ const userRoutes = require('./routes/users'); // импортируем роут
 const cardRoutes = require('./routes/cards'); // импортируем роуты карточек
 const errorHandler = require('./middleware/error-handler');
 const cors = require('cors');
-const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { requestLogger, errorLogger } = require('./middleware/logger');
 const NotFoundError = require('./errors/not-found-error');
 
 const { PORT = 3000 } = process.env;
