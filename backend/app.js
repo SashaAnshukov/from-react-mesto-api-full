@@ -28,7 +28,7 @@ app.use((req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });
 app.use(cors({
-  origin: 'http://buenosdias2.nomoredomains.work', // домен фронтенда
+  origin: 'http://buenosdias.nomoredomains.work', // домен фронтенда
   credentials: true // для того, чтобы CORS поддерживал кроссдоменные куки
 }));
 app.use(errorLogger); // подключаем логгер ошибок
