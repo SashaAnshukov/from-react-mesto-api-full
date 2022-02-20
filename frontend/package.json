@@ -1,6 +1,6 @@
 {
   "name": "mesto-react",
-  "homepage": "http://buenosdias.nomoredomains.work/",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
