@@ -19,6 +19,13 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(requestLogger);
+//крашик
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 app.use('/', userRoutes); // запускаем импортированные роуты
 app.use('/', cardRoutes); // запускаем импортированные роуты
 
