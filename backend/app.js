@@ -8,7 +8,7 @@ const { errors } = require('celebrate');
 const userRoutes = require('./routes/users'); // импортируем роуты пользователя
 const cardRoutes = require('./routes/cards'); // импортируем роуты карточек
 const errorHandler = require('./middleware/error-handler');
-//const cors = require('cors');
+const cors = require('cors');
 const { requestLogger, errorLogger } = require('./middleware/logger');
 const NotFoundError = require('./errors/not-found-error');
 
@@ -27,10 +27,10 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 app.use((req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });
-/*app.use(cors({
+app.use(cors({
   origin: 'http://buenosdias.nomoredomains.work', // домен фронтенда
   credentials: true // для того, чтобы CORS поддерживал кроссдоменные куки
-}));*/
+}));
 app.use(errorLogger); // подключаем логгер ошибок
 app.use(errors()); // обработчик ошибок celebrate
 app.use(errorHandler); // централизованный обработчик ошибок (500 )
