@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://buenosdias.nomoredomains.work';
+export const BASE_URL = 'http://buenosdias2.nomoredomains.work';
 
 // проверка ответа от сервера
 const checkResponse = (response) => {
