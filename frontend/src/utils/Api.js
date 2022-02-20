@@ -1,3 +1,4 @@
+//
 export class Api {
     constructor({adress, headers}) {
         this._adress = adress;
