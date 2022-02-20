@@ -71,7 +71,7 @@ module.exports.login = (request, response, next) => {
         .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
-          sameSite: false // <-- Выключаем данную опцию
+          sameSite: 'none' // <-- Выключаем данную опцию
         })
         .send({ data: user.toJSON() });
     })
