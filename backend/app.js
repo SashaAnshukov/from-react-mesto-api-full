@@ -8,7 +8,7 @@ const { errors } = require('celebrate');
 const userRoutes = require('./routes/users'); // импортируем роуты пользователя
 const cardRoutes = require('./routes/cards'); // импортируем роуты карточек
 const errorHandler = require('./middleware/error-handler');
-//const cors = require('cors');
+const cors = require('cors');
 const {requestLogger, errorLogger} = require('./middleware/logger');
 const NotFoundError = require('./errors/not-found-error');
 
@@ -28,7 +28,7 @@ const allowedCors = [
 ];
 
 // безопасность
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
   const { origin } = req.headers;// Сохраняем источник запроса в переменную origin
   // проверяем, что источник запроса есть среди разрешённых
   const { method } = req; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
@@ -50,7 +50,7 @@ app.use((req, res, next) => {
   }
 
   next();
-});
+});*/
 
 app.use(requestLogger);
 
@@ -70,10 +70,20 @@ app.use((req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });
 
-/*app.use(cors({
-  origin: 'http://buenosdias.nomoredomains.work', // домен фронтенда
+app.use(cors({
+  allowedCors = [
+    'http://localhost:3000',
+    'http://buenosdias.nomoredomains.work',
+    'https://buenosdias.nomoredomains.work',
+    'http://praktikum.tk',
+    'https://praktikum.tk'
+  ], // домен фронтенда
+  methods: [GET,HEAD,PUT,PATCH,POST,DELETE],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-type', 'origin'],
   credentials: true // для того, чтобы CORS поддерживал кроссдоменные куки
-}));*/
+}));
 
 app.use(errorLogger); // подключаем логгер ошибок
 app.use(errors()); // обработчик ошибок celebrate
