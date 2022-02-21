@@ -71,7 +71,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({
-  allowedCors = [
+  origin = [
     'http://localhost:3000',
     'http://buenosdias.nomoredomains.work',
     'https://buenosdias.nomoredomains.work',
