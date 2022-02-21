@@ -1,5 +1,5 @@
+//require('dotenv').config(); //модуль для загрузки env-переменных в Node.js
 const express = require('express');
-
 const app = express();
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
@@ -8,9 +8,8 @@ const { errors } = require('celebrate');
 const userRoutes = require('./routes/users'); // импортируем роуты пользователя
 const cardRoutes = require('./routes/cards'); // импортируем роуты карточек
 const errorHandler = require('./middleware/error-handler');
-const cors = require('cors');
-const requestLogger = require('./middleware/logger');
-const errorLogger = require('./middleware/logger');
+//const cors = require('cors');
+const {requestLogger, errorLogger} = require('./middleware/logger');
 const NotFoundError = require('./errors/not-found-error');
 
 const { PORT = 3000 } = process.env;
@@ -21,7 +20,7 @@ app.use(cookieParser());
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
-  'localhost:3000',
+  'http://localhost:3000',
   'http://buenosdias.nomoredomains.work',
   'https://buenosdias.nomoredomains.work',
   'http://praktikum.tk',
@@ -71,10 +70,10 @@ app.use((req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });
 
-app.use(cors({
+/*app.use(cors({
   origin: 'http://buenosdias.nomoredomains.work', // домен фронтенда
   credentials: true // для того, чтобы CORS поддерживал кроссдоменные куки
-}));
+}));*/
 
 app.use(errorLogger); // подключаем логгер ошибок
 app.use(errors()); // обработчик ошибок celebrate
