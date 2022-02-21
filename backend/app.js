@@ -18,14 +18,31 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+app.use(cors({
+  origin = [
+    'http://localhost:3000',
+    'http://buenosdias.nomoredomains.work',
+    'https://buenosdias.nomoredomains.work',
+    'http://buenosdias.nomoredomains.work',
+    'https://buenosdias2.nomoredomains.work',
+    'http://praktikum.tk',
+    'https://praktikum.tk'
+  ], // домен фронтенда
+  methods: [GET,HEAD,PUT,PATCH,POST,DELETE],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-type', 'origin'],
+  credentials: true
+}));
+
 // Массив доменов, с которых разрешены кросс-доменные запросы
-const allowedCors = [
+/*const allowedCors = [
   'http://localhost:3000',
   'http://buenosdias.nomoredomains.work',
   'https://buenosdias.nomoredomains.work',
   'http://praktikum.tk',
   'https://praktikum.tk'
-];
+];*/
 
 // безопасность
 /*app.use((req, res, next) => {
@@ -69,21 +86,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 app.use((req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });
-
-app.use(cors({
-  origin = [
-    'http://localhost:3000',
-    'http://buenosdias.nomoredomains.work',
-    'https://buenosdias.nomoredomains.work',
-    'http://praktikum.tk',
-    'https://praktikum.tk'
-  ], // домен фронтенда
-  methods: [GET,HEAD,PUT,PATCH,POST,DELETE],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: ['Content-type', 'origin'],
-  credentials: true // для того, чтобы CORS поддерживал кроссдоменные куки
-}));
 
 app.use(errorLogger); // подключаем логгер ошибок
 app.use(errors()); // обработчик ошибок celebrate
