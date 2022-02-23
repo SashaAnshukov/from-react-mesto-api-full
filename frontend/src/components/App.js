@@ -50,7 +50,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   // стэйт проверки токена
-  const [checkToken, setCheckToken] = useState(false);
+  //const [checkToken, setCheckToken] = useState(false);
   // стэйт для получения email пользователя в шапке
   const [email, setEmail] = useState(false);
   // стэйт для модального окна при успешной/не успешной регистрации
@@ -70,39 +70,6 @@ function App() {
       })
     }
   }, [loggedIn])
-
-  useEffect(() =>{
-    // если у пользователя есть токен в localStorage,
-    // эта функция проверит валидность токена
-    
-    /*const jwt = localStorage.getItem('jwt');
-    if (jwt){
-      setCheckToken(true)
-      // проверим токен
-      Auth.tokenCheck (jwt).then((res) => {
-        // авторизуем пользователя и отправим залогиниться??
-        setLoggedIn (true);
-        navigate('/');
-        setEmail(res.data.email);
-      })
-      .catch(err => {
-        console.log (`Ошибка: ${err}`)
-      })
-    }*/
-    api.getUserData()
-      .then((res) => {
-        if (res) {
-          // меняем переменные состояния авторизации
-          setLoggedIn(true);
-          setEmail(res.email);
-          // переходим на главную страницу
-          navigate('/');
-        }
-      })
-      .catch((err) => {
-        console.log (`Ошибка: ${err}`)
-      });
-  }, [])
 
   const [cards, setCards] = useState([]);
   useEffect(() => {
@@ -225,7 +192,24 @@ function App() {
     })
   }
 
-
+  /*useEffect(() =>{
+    // если у пользователя есть токен в localStorage,
+    // эта функция проверит валидность токена
+    const jwt = localStorage.getItem('jwt');
+    if (jwt){
+      setCheckToken(true)
+      // проверим токен
+      Auth.tokenCheck (jwt).then((res) => {
+        // авторизуем пользователя и отправим залогиниться??
+        setLoggedIn (true);
+        navigate('/');
+        setEmail(res.data.email);
+      })
+      .catch(err => {
+        console.log (`Ошибка: ${err}`)
+      })
+    }
+  }, [])*/
 
   function signOut(){
     localStorage.removeItem('jwt');
@@ -247,7 +231,7 @@ function App() {
           <Route exact path='/sign-in' element={<Login authorization = {authorization}/>} />
           
           <Route exact path='/' element={
-            <ProtectedRoute loggedIn={loggedIn} checkToken={checkToken}>
+            <ProtectedRoute loggedIn={loggedIn}>
               <Main 
                 handleEditAvatarClick = {handleEditAvatarClick}
                 handleEditProfileClick = {handleEditProfileClick}
