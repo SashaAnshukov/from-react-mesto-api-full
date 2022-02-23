@@ -10,7 +10,7 @@ const {
 
 // роуты, не требующие авторизации, регистрация и логин
 router.post(
-  '/signup',
+  '/sign-up',
   celebrate({
     body: Joi.object().keys({
       name: Joi.string().min(2).max(30),
@@ -24,7 +24,7 @@ router.post(
 );
 
 router.post(
-  '/signin',
+  '/sign-in',
   celebrate({
     body: Joi.object().keys({
       email: Joi.string().required().email(),

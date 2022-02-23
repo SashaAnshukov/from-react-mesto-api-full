@@ -9,7 +9,7 @@ const checkResponse = (response) => {
 }
 
 export const register = (email, password) => {
-    return fetch(`${BASE_URL}/signup`, {
+    return fetch(`${BASE_URL}/sign-up`, {
         method: 'POST',
         headers: {
         'Accept': 'application/json',
@@ -23,7 +23,7 @@ export const register = (email, password) => {
 // функция, которая будет проверять логин и пароль пользователя
 // на соответствие какому-либо профилю, хранящемуся в базе данных
 export const authorize = (email, password) => {
-    return fetch(`${BASE_URL}/signin`, {
+    return fetch(`${BASE_URL}/sign-in`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
