@@ -18,6 +18,15 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+app.use(requestLogger);
+
+//крашик
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 /*app.use(cors({
   origin = [
     'http://localhost:3000',
@@ -65,19 +74,12 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Methods", DEFAULT_ALLOWED_METHODS);
     // завершаем обработку запроса и возвращаем результат клиенту
     res.header("Access-Control-Allow-Headers", requestHeaders);
-    return res.end();
+    // завершаем обработку запроса и возвращаем результат клиенту
+    res.end();
+    return
   }
 
-  next();
-});
-
-app.use(requestLogger);
-
-//крашик
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
+  return next();
 });
 
 app.use('/', userRoutes); // запускаем импортированные роуты
