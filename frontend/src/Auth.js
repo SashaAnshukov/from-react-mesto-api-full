@@ -54,7 +54,8 @@ export const tokenCheck  = (token) => {
         },
         credentials: 'include'
     })
-    .then(res => res.json())
+    .then(checkResponse)
+    //.then(res => res.json())
     .then(data => data)
 }
 
