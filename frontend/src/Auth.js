@@ -36,8 +36,12 @@ export const authorize = (email, password) => {
     .then((data) => {
         //console.log(data)
         // сохраняем токен в localStorage
-        localStorage.setItem('jwt', data.token);
+        if (data.token) {
+            localStorage.setItem('jwt', data.token);
+            updateHeaders();
+        //localStorage.setItem('jwt', data.token);
         return data;
+        }
     })
     .catch(err => console.log(err))
 };
