@@ -73,13 +73,12 @@ module.exports.login = (request, response, next) => {
       );
       // вернём токен
       response
-        /*.cookie('jwt', token, {
+        .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
-          sameSite: false // <-- Выключаем данную опцию
-        })*/
-        //.send({ data: user.toJSON() });
-        .send({ token });
+          sameSite: true // <-- Выключаем данную опцию
+        })
+        .send({ data: user.toJSON() });
     })
     .catch(next);
 };
