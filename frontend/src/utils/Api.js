@@ -98,7 +98,7 @@ export class Api {
 }
 
 const api = new Api({
-    adress: 'https://buenosdias2.nomoredomains.work',
+    adress: 'https://buenosdias.nomoredomains.work',
     // : '86724e9f-206a-43a9-ab92-a5e8d301d078'
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
