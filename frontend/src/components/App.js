@@ -71,6 +71,39 @@ function App() {
     }
   }, [loggedIn])
 
+  useEffect(() =>{
+    // если у пользователя есть токен в localStorage,
+    // эта функция проверит валидность токена
+    
+    /*const jwt = localStorage.getItem('jwt');
+    if (jwt){
+      setCheckToken(true)
+      // проверим токен
+      Auth.tokenCheck (jwt).then((res) => {
+        // авторизуем пользователя и отправим залогиниться??
+        setLoggedIn (true);
+        navigate('/');
+        setEmail(res.data.email);
+      })
+      .catch(err => {
+        console.log (`Ошибка: ${err}`)
+      })
+    }*/
+    api.getUserData()
+      .then((res) => {
+        if (res) {
+          // меняем переменные состояния авторизации
+          setLoggedIn(true);
+          setEmail(res.email);
+          // переходим на главную страницу
+          navigate('/');
+        }
+      })
+      .catch((err) => {
+        console.log (`Ошибка: ${err}`)
+      });
+  }, [])
+
   const [cards, setCards] = useState([]);
   useEffect(() => {
     if (loggedIn) {
@@ -192,38 +225,7 @@ function App() {
     })
   }
 
-  useEffect(() =>{
-    // если у пользователя есть токен в localStorage,
-    // эта функция проверит валидность токена
-    
-    /*const jwt = localStorage.getItem('jwt');
-    if (jwt){
-      setCheckToken(true)
-      // проверим токен
-      Auth.tokenCheck (jwt).then((res) => {
-        // авторизуем пользователя и отправим залогиниться??
-        setLoggedIn (true);
-        navigate('/');
-        setEmail(res.data.email);
-      })
-      .catch(err => {
-        console.log (`Ошибка: ${err}`)
-      })
-    }*/
-    api.getUserData()
-      .then((res) => {
-        if (res) {
-          // меняем переменные состояния авторизации
-          setLoggedIn(true);
-          setEmail(res.email);
-          // переходим на главную страницу
-          navigate('/');
-        }
-      })
-      .catch((err) => {
-        console.log (`Ошибка: ${err}`)
-      });
-  }, [])
+
 
   function signOut(){
     localStorage.removeItem('jwt');
