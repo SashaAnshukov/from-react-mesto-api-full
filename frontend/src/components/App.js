@@ -231,7 +231,7 @@ function App() {
           <Route exact path='/sign-in' element={<Login authorization = {authorization}/>} />
           
           <Route exact path='/' element={
-            <ProtectedRoute loggedIn={loggedIn} checkToken={checkToken}>
+            <ProtectedRoute loggedIn={loggedIn}>
               <Main 
                 handleEditAvatarClick = {handleEditAvatarClick}
                 handleEditProfileClick = {handleEditProfileClick}
