@@ -210,13 +210,12 @@ function App() {
         console.log (`Ошибка: ${err}`)
       })
     }*/
-    api
-      .getUserData()
+    api.getUserData()
       .then((res) => {
         if (res) {
           // меняем переменные состояния авторизации
           setLoggedIn(true);
-          setEmail(res.data.email);
+          setEmail(res.email);
           // переходим на главную страницу
           navigate('/');
         }
