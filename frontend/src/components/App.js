@@ -187,6 +187,7 @@ function App() {
       }
       else{
         setLoggedIn(true);
+        setEmail(res.data.email);
         navigate('/');
       }
     })
