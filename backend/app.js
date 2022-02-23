@@ -47,23 +47,19 @@ app.get('/crash-test', () => {
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
   'http://localhost:3000',
-    'http://buenosdias.nomoredomains.work',
-    'https://buenosdias.nomoredomains.work',
-    'http://buenosdias.nomoredomains.work',
-    'https://buenosdias2.nomoredomains.work',
-    'http://praktikum.tk',
-    'https://praktikum.tk'
+  'http://buenosdias.nomoredomains.work',
+  'https://buenosdias.nomoredomains.work',
+  'http://buenosdias.nomoredomains.work',
+  'https://buenosdias2.nomoredomains.work',
 ];
 
 // безопасность
 app.use((req, res, next) => {
-  const { origin } = req.headers;// Сохраняем источник запроса в переменную origin
-  // проверяем, что источник запроса есть среди разрешённых
+  const { origin } = req.headers;// Сохраняем источник запроса в переменную origin // проверяем, что источник запроса есть среди разрешённых
   const { method } = req; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
   const requestHeaders = req.headers["access-control-request-headers"];
   // Значение для заголовка Access-Control-Allow-Methods по умолчанию (разрешены все типы запросов)
   const DEFAULT_ALLOWED_METHODS = "GET,HEAD,PUT,PATCH,POST,DELETE";
-
   if (allowedCors.includes(origin)) {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
     res.header("Access-Control-Allow-Origin", origin);
@@ -78,7 +74,6 @@ app.use((req, res, next) => {
     res.end();
     return
   }
-
   return next();
 });
 
