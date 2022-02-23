@@ -25,10 +25,10 @@ export const register = (email, password) => {
 export const authorize = (email, password) => {
     return fetch(`${BASE_URL}/sign-in`, {
         method: 'POST',
-        headers: {
+        /*headers: {
             //'Accept': 'application/json',
             'Content-Type': 'application/json'
-        },
+        },*/
         credentials: 'include',
         body: JSON.stringify({email, password})
     })
