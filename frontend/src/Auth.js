@@ -1,5 +1,3 @@
-import api from './utils/Api';
-
 export const BASE_URL = 'https://buenosdias2.nomoredomains.work';
 
 // проверка ответа от сервера///5
@@ -31,19 +29,15 @@ export const authorize = (email, password) => {
             //'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        //credentials: 'include',
+        credentials: 'include',
         body: JSON.stringify({email, password})
     })
     .then(checkResponse)
     .then((data) => {
         //console.log(data)
         // сохраняем токен в localStorage
-        if (data.token) {
-            localStorage.setItem('jwt', data.token);
-            api.updateHeaders();
-        //localStorage.setItem('jwt', data.token);
+        localStorage.setItem('jwt', data.token);
         return data;
-        }
     })
     .catch(err => console.log(err))
 };

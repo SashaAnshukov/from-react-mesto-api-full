@@ -8,7 +8,7 @@ const { errors } = require('celebrate');
 const userRoutes = require('./routes/users'); // импортируем роуты пользователя
 const cardRoutes = require('./routes/cards'); // импортируем роуты карточек
 const errorHandler = require('./middleware/error-handler');
-//const cors = require('cors');
+const cors = require('cors');
 const {requestLogger, errorLogger} = require('./middleware/logger');
 const NotFoundError = require('./errors/not-found-error');
 
@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-/*app.use(cors({
+app.use(cors({
   origin = [
     'http://localhost:3000',
     'http://buenosdias.nomoredomains.work',
@@ -33,10 +33,10 @@ app.use(cookieParser());
   optionsSuccessStatus: 204,
   allowedHeaders: ['Content-type', 'origin'],
   credentials: true
-}));*/
+}));
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
-const allowedCors = [
+/*const allowedCors = [
   'http://localhost:3000',
     'http://buenosdias.nomoredomains.work',
     'https://buenosdias.nomoredomains.work',
@@ -69,7 +69,7 @@ app.use((req, res, next) => {
   }
 
   next();
-});
+});*/
 
 app.use(requestLogger);
 
