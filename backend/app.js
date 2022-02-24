@@ -75,7 +75,7 @@ app.use((req, res, next) => {
     res.end();
     return
   }
-  return next();
+  next();
 });
 
 app.use('/', userRoutes); // запускаем импортированные роуты
