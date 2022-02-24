@@ -50,7 +50,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   // стэйт проверки токена
-  //const [checkToken, setCheckToken] = useState(false);
+  const [checkToken, setCheckToken] = useState(false);
   // стэйт для получения email пользователя в шапке
   const [email, setEmail] = useState(false);
   // стэйт для модального окна при успешной/не успешной регистрации
@@ -187,13 +187,13 @@ function App() {
       }
       else{
         setLoggedIn(true);
-        setEmail(data.email);/// в этой строке не уверен
+        //setEmail(data.email);/// в этой строке не уверен
         navigate('/');
       }
     })
   }
 
-  /*useEffect(() =>{
+  useEffect(() =>{
     // если у пользователя есть токен в localStorage,
     // эта функция проверит валидность токена
     const jwt = localStorage.getItem('jwt');
@@ -210,7 +210,7 @@ function App() {
         console.log (`Ошибка: ${err}`)
       })
     }
-  }, [])*/
+  }, [])
 
   function signOut(){
     localStorage.removeItem('jwt');
