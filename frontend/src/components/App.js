@@ -187,7 +187,7 @@ function App() {
       }
       else{
         setLoggedIn(true);
-        setEmail(data.email);
+        setEmail(data.email);/// в этой строке не уверен
         navigate('/');
       }
     })
