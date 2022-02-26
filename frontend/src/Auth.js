@@ -33,12 +33,12 @@ export const authorize = (email, password) => {
         body: JSON.stringify({email, password})
     })
     .then(checkResponse)
-    .then((data) => {
+    /*.then((data) => {
         //console.log(data)
         // сохраняем токен в localStorage
         localStorage.setItem('jwt', data.token);
         return data;
-    })
+    })*/
     .catch(err => console.log(err))
 };
 
