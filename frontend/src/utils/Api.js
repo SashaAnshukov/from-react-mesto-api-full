@@ -13,7 +13,7 @@ export class Api {
         return fetch(`${this._adress}/cards`, {
             method: 'GET',
             headers: this._headers,
-            credentials: 'include'
+            //credentials: 'include'
         })
         .then(this._checkResponse)
     }
@@ -22,7 +22,7 @@ export class Api {
         return fetch(`${this._adress}/users/me`, {
             method: 'GET',
             headers: this._headers,
-            credentials: 'include'
+            //credentials: 'include'
         })
         .then(this._checkResponse)
     }
