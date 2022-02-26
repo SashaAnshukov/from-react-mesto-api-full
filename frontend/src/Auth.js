@@ -43,7 +43,7 @@ export const authorize = (email, password) => {
 };
 
 //Запрос для проверки валидности токена и получения email для вставки в шапку сайта
-export const tokenCheck  = (token) => {
+/*export const tokenCheck  = (token) => {
     //console.log(token)
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
@@ -57,4 +57,4 @@ export const tokenCheck  = (token) => {
     //.then(checkResponse)
     .then(res => res.json())
     .then(data => data)
-}
+}*/
