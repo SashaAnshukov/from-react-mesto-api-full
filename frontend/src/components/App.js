@@ -197,20 +197,21 @@ function App() {
     // если у пользователя есть токен в localStorage,
     // эта функция проверит валидность токена
     const jwt = coockie.getItem('jwt');
-    if (jwt){
-      setCheckToken(true)
-      // проверим токен
-      Auth.tokenCheck (jwt).then((res) => {
+    if (jwt) {
+        setCheckToken(true)
+        // проверим токен
+        //Auth.tokenCheck (jwt).then((res) => {
         // авторизуем пользователя и отправим залогиниться??
         setLoggedIn (true);
         navigate('/');
         setEmail(res.data.email);
-      })
-      .catch(err => {
-        console.log (`Ошибка: ${err}`)
-      })
     }
-  }, [])
+    else{
+      setLoggedIn(true);
+      //setEmail(data.email);/// в этой строке не уверен
+      navigate('/sign-up');
+    }
+  })
 
   /*useEffect(() => {
     api.getUserData()
