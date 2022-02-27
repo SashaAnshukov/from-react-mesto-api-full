@@ -193,7 +193,7 @@ function App() {
     })
   }
 
-  useEffect(() =>{
+  /*useEffect(() =>{
     // если у пользователя есть токен в localStorage,
     // эта функция проверит валидность токена
     const jwt = localStorage.coockie('jwt');
@@ -211,9 +211,9 @@ function App() {
       //setEmail(data.email);/// в этой строке не уверен
       navigate('/sign-up');
     }
-  })
+  })*/
 
-  /*useEffect(() => {
+  useEffect(() => {
     api.getUserData()
       .then((res) => {
         if (res) {
@@ -226,7 +226,7 @@ function App() {
       .catch(() => {
         setLoggedIn(false);
       });
-  }, []);*/
+  }, []);
 
   function signOut(){
     localStorage.removeItem('jwt');
