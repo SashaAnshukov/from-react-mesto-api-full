@@ -214,9 +214,13 @@ function App() {
 
   useEffect(() => {
     api.getUserData()
-      .then(() => {
-        setLoggedIn(true);
-        setCheckToken(true)
+      .then((res) => {
+        if (res) {
+          setLoggedIn(true);
+          setCheckToken(true);
+          navigate('/');
+          setEmail(res.data.email);
+        }
       })
       .catch(() => {
         setLoggedIn(false);
