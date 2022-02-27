@@ -193,10 +193,10 @@ function App() {
     })
   }
 
-  /*useEffect(() =>{
+  useEffect(() =>{
     // если у пользователя есть токен в localStorage,
     // эта функция проверит валидность токена
-    const jwt = localStorage.getItem('jwt');
+    const jwt = coockie.getItem('jwt');
     if (jwt){
       setCheckToken(true)
       // проверим токен
@@ -210,9 +210,9 @@ function App() {
         console.log (`Ошибка: ${err}`)
       })
     }
-  }, [])*/
+  }, [])
 
-  useEffect(() => {
+  /*useEffect(() => {
     api.getUserData()
       .then((res) => {
         if (res) {
@@ -225,7 +225,7 @@ function App() {
       .catch(() => {
         setLoggedIn(false);
       });
-  }, []);
+  }, []);*/
 
   function signOut(){
     localStorage.removeItem('jwt');
