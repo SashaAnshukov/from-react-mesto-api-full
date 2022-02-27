@@ -196,7 +196,7 @@ function App() {
   useEffect(() =>{
     // если у пользователя есть токен в localStorage,
     // эта функция проверит валидность токена
-    const jwt = localStorage.coockie.getItem('jwt');
+    const jwt = localStorage.coockie('jwt');
     if (jwt) {
         setCheckToken(true)
         // проверим токен
@@ -207,7 +207,7 @@ function App() {
         //setEmail(res.data.email);
     }
     else{
-      setLoggedIn(true);
+      setLoggedIn(false);
       //setEmail(data.email);/// в этой строке не уверен
       navigate('/sign-up');
     }
