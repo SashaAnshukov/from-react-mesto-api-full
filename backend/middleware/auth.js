@@ -4,7 +4,7 @@ const UnauthorizedError = require('../errors/unauthorized-error');
 
 const auth = (req, res, next) => {
   const authorization = req.headers;
-  if (!authorization || authorization.startWith('Bearer')){
+  if (!authorization || !authorization.startWith('Bearer')){
     res.status(401).send({message: 'Прошляпил авторизацию'})
   }
   const token = authorization.replace('Bearer', '');
