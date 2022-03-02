@@ -50,7 +50,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   // стэйт проверки токена
-  const [checkToken, setCheckToken] = useState(false);
+  //const [checkToken, setCheckToken] = useState(false);
   // стэйт для получения email пользователя в шапке
   const [email, setEmail] = useState(false);
   // стэйт для модального окна при успешной/не успешной регистрации
@@ -213,7 +213,7 @@ function App() {
     }
   })*/
 
-  useEffect(() => {
+  /*useEffect(() => {
     api.getUserData()
       .then((res) => {
         if (res) {
@@ -226,7 +226,7 @@ function App() {
       .catch(() => {
         setLoggedIn(false);
       });
-  }, []);
+  }, []);*/
 
   function signOut(){
     localStorage.removeItem('jwt');
@@ -248,7 +248,7 @@ function App() {
           <Route exact path='/sign-in' element={<Login authorization = {authorization}/>} />
           
           <Route exact path='/' element={
-            <ProtectedRoute loggedIn={loggedIn} checkToken={checkToken}>
+            <ProtectedRoute loggedIn={loggedIn} >
               <Main 
                 handleEditAvatarClick = {handleEditAvatarClick}
                 handleEditProfileClick = {handleEditProfileClick}
