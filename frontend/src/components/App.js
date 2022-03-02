@@ -213,7 +213,7 @@ function App() {
     }
   })*/
 
-  useEffect(() => {
+  /*useEffect(() => {
     api.getUserData()
       .then((res) => {
         if (res) {
@@ -226,7 +226,7 @@ function App() {
       .catch(() => {
         setLoggedIn(false);
       });
-  }, []);
+  }, []);*/
 
   function signOut(){
     localStorage.removeItem('jwt');
