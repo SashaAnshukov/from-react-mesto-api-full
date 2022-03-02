@@ -213,20 +213,20 @@ function App() {
     }
   })*/
 
-  /*useEffect(() => {
+  useEffect(() => {
     api.getUserData()
       .then((res) => {
         if (res) {
           setLoggedIn(true);
-          setCheckToken(true);
+          ///setCheckToken(true);
           navigate('/');
-          setEmail(res.data.email);
+          //setEmail(res.data.email);
         }
       })
       .catch(() => {
         setLoggedIn(false);
       });
-  }, []);*/
+  }, []);
 
   function signOut(){
     localStorage.removeItem('jwt');
