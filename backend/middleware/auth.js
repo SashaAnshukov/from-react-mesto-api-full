@@ -2,7 +2,7 @@
 const jwt = require('jsonwebtoken');
 const UnauthorizedError = require('../errors/unauthorized-error');
 
-/*const auth = (req, res, next) => {
+const auth = (req, res, next) => {
   const {authorization} = req.headers;
   console.log(req.headers.cookie);
   if (!authorization || !authorization.startsWith('Bearer ')) {
@@ -21,9 +21,9 @@ const UnauthorizedError = require('../errors/unauthorized-error');
   req.user = payload;
 
   return next();
-};*/
+};
 
-const auth = (req, res, next) => {
+/*const auth = (req, res, next) => {
   const token = req.cookies.jwt;
   // const token = req.headers.cookie;
   // console.log(req.headers.cookie);
@@ -38,6 +38,6 @@ const auth = (req, res, next) => {
   req.user = payload;
 
   next();
-};
+};*/
 
 module.exports = auth;
