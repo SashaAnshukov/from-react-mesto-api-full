@@ -3,7 +3,7 @@ import CurrentUserContext from '../contexts/CurrentUserContext';
 
 function Card({onCardClick, onCardLike, onCardDelete, card}) {
     const currentUser = useContext(CurrentUserContext);
-    // Определяем, являемся ли мы владельцем текущей карточки
+    /// Определяем, являемся ли мы владельцем текущей карточки
     const isOwn = card.owner._id === currentUser._id;
     // Создаём переменную, которую после зададим в `className` для кнопки удаления
     const cardDeleteButtonClassName = (
