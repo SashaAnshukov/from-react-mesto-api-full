@@ -45,7 +45,7 @@ function Card({onCardClick, onCardLike, onCardDelete, card}) {
                             <div className="rectangle__likes">
                                 <button
                                     onClick={handleLikeClick}
-                                    className = {cardLikeButtonClassName}
+                                    /*className = {cardLikeButtonClassName}*/
                                     type ="button" aria-label="like" 
                                     /*className="rectangle__mesto-like opacity-like"*/>
                                 </button>
