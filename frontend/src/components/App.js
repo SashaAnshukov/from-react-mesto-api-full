@@ -71,12 +71,12 @@ function App() {
     }
   }, [loggedIn])*/
 
-  const [cards, setCards] = useState({});
+  const [cards, setCards] = useState([]);
   useEffect(() => {
     if (loggedIn) {
       api.getFullPageInfo().then(res => {
-        console.log(res);
-        setCards(res);
+        console.log({res});
+        setCards({res});
         setCurrentUser(res);
       })
       .catch(err => {
