@@ -7,7 +7,7 @@ function Main(
     handleAddPlaceClick, onCardClick, onCardLike, onCardDelete, cards}) {
 
     const currentUser = useContext(CurrentUserContext);
-    //console.log (cards);
+    console.log (cards);
 
     return (
         <main>
