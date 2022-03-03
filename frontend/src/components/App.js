@@ -64,7 +64,7 @@ function App() {
     if (loggedIn) {
       api.getUserData().then(res => {
         console.log(res);
-        setCurrentUser(res);
+        setCurrentUser(res.data);
       })
       .catch(err => {
           console.log (`Ошибка: ${err}`)
@@ -75,7 +75,7 @@ function App() {
   const [cards, setCards] = useState([]);
   
   useEffect(() => {
-    if (loggedIn) {
+    if (loggedIn) {[
       api.getInitialCards().then(res => {
         console.log(res);
         setCards(res);
@@ -84,7 +84,7 @@ function App() {
       .catch(err => {
         console.log (`Ошибка: ${err}`)
       })
-    }
+    ]}
   }, [loggedIn])
 
   function handleCardLike(card) {
