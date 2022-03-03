@@ -10,11 +10,11 @@ function Card({onCardClick, onCardLike, onCardDelete, card}) {
         `rectangle__trash ${isOwn ? 'rectangle__trash opacity-buttons' : 'rectangle__trash_hidden'}`
     ); 
     // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
-    /*const isLiked = card.likes.some((i) => i === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     // Создаём переменную, которую после зададим в `className` для кнопки лайка
     const cardLikeButtonClassName = (
         `rectangle__mesto-like ${isLiked ? 'rectangle__mesto-like_active opacity-like' : ''}`
-    );*/
+    );
 
     function handleClick() {
         onCardClick(card);
@@ -38,16 +38,16 @@ function Card({onCardClick, onCardLike, onCardDelete, card}) {
                             onClick={handleDeleteClick} 
                             className = {cardDeleteButtonClassName}
                             type ="button" aria-label="trash" 
-                            /*className="rectangle__trash opacity-buttons"*/>
+                            className="rectangle__trash opacity-buttons">
                         </button>
                         <div className="rectangle__info">
                             <h2 className="rectangle__mesto-text">{card.name}</h2>
                             <div className="rectangle__likes">
                                 <button
                                     onClick={handleLikeClick}
-                                    /*className = {cardLikeButtonClassName}*/
+                                    className = {cardLikeButtonClassName}
                                     type ="button" aria-label="like" 
-                                    /*className="rectangle__mesto-like opacity-like"*/>
+                                    className="rectangle__mesto-like opacity-like">
                                 </button>
                                 <h3 className="rectangle__mesto-numbersLike">{card.likes}</h3>
                             </div>

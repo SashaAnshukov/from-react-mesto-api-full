@@ -74,19 +74,6 @@ function App() {
   }, [loggedIn])
 
   const [cards, setCards] = useState([]);
-  
-  /*useEffect(() => {
-    if (loggedIn) {
-      api.getInitialCards()
-      .then(([cardsData]) => {
-        console.log(cardsData);
-        setCards(cardsData);
-      })
-      .catch(err => {
-        console.log (`Ошибка: ${err}`)
-      })
-    }
-  }, [loggedIn])*/
 
   useEffect(() => {
     if (loggedIn) {
