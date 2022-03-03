@@ -29,7 +29,7 @@ export const authorize = (email, password) => {
             //'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        //credentials: 'include',
+        credentials: 'include', // теперь куки посылаются вместе с запросом
         body: JSON.stringify({email, password})
     })
     .then(checkResponse)
