@@ -1,10 +1,7 @@
 //
 export class Api {
-    constructor({adress, headers}) {
+    constructor({adress}) {
         this._adress = adress;
-        this._headers = {
-            "Content-Type": "application/json",
-        };
     }
 
     getFullPageInfo() {
@@ -14,7 +11,9 @@ export class Api {
     getInitialCards() {
         return fetch(`${this._adress}/cards`, {
             method: 'GET',
-            headers: this._headers,
+            /*headers: {
+                'Content-Type': 'application/json'
+            },*/
             credentials: 'include'
         })
         .then(this._checkResponse)
@@ -23,7 +22,9 @@ export class Api {
     getUserData() {
         return fetch(`${this._adress}/users/me`, {
             method: 'GET',
-            headers: this._headers,
+            /*headers: {
+                'Content-Type': 'application/json'
+            },*/
             credentials: 'include'
         })
         .then(this._checkResponse)
@@ -32,7 +33,9 @@ export class Api {
     setUserData(data) {
         return fetch(`${this._adress}/users/me`, {
             method: 'PATCH',
-            headers: this._headers,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             credentials: 'include',
             body: JSON.stringify({
                 name: data.name,
@@ -46,7 +49,9 @@ export class Api {
         //console.log('!!!', avatar);
         return fetch(`${this._adress}/users/me/avatar`, {
             method: 'PATCH',
-            headers: this._headers,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             credentials: 'include',
             body: JSON.stringify({
                 avatar: avatar
@@ -59,7 +64,9 @@ export class Api {
     setMyCard(data) {
         return fetch(`${this._adress}/cards`, {
             method: 'POST',
-            headers: this._headers,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             credentials: 'include',
             body: JSON.stringify({
                 name: data.name,
@@ -73,7 +80,9 @@ export class Api {
     deleteCard(id) {
         return fetch(`${this._adress}/cards/${id}`, {
             method: 'DELETE',
-            headers: this._headers,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             credentials: 'include'
         })
         .then(this._checkResponse)
@@ -83,7 +92,9 @@ export class Api {
     сhangeLikeCard(id, like) {
         return fetch(`${this._adress}/cards/likes/${id}`, {
             method: like ? 'DELETE' : 'PUT',
-            headers: this._headers,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             credentials: 'include'
         })
         .then(this._checkResponse)
@@ -101,11 +112,7 @@ export class Api {
 
 const api = new Api({
     adress: 'https://buenosdias2.nomoredomains.work',
-    // : '86724e9f-206a-43a9-ab92-a5e8d301d078'
-    headers: {
-        //'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
-        "Content-Type": "application/json"
-    },
+    //token : '86724e9f-206a-43a9-ab92-a5e8d301d078'
 })
 
 export default api;
