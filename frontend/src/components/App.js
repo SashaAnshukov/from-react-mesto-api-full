@@ -60,7 +60,7 @@ function App() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (loggedIn) {
       api.getUserData().then(res => {
           setCurrentUser(res);
@@ -69,7 +69,7 @@ function App() {
           console.log (`Ошибка: ${err}`)
       })
     }
-  }, [loggedIn])
+  }, [loggedIn])*/
 
   const [cards, setCards] = useState([]);
   useEffect(() => {
