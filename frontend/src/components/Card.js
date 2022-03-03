@@ -10,7 +10,7 @@ function Card({onCardClick, onCardLike, onCardDelete, card}) {
         `rectangle__trash ${isOwn ? 'rectangle__trash opacity-buttons' : 'rectangle__trash_hidden'}`
     ); 
     // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     // Создаём переменную, которую после зададим в `className` для кнопки лайка
     const cardLikeButtonClassName = (
         `rectangle__mesto-like ${isLiked ? 'rectangle__mesto-like_active opacity-like' : ''}`
