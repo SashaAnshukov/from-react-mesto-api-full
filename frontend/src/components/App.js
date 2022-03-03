@@ -74,7 +74,7 @@ function App() {
   const [cards, setCards] = useState([]);
   useEffect(() => {
     if (loggedIn) {
-      api.getInitialCards().then(([res]) => {
+      api.getFullPageInfo().then(res => {
         console.log(res);
         setCards(res);
       })
