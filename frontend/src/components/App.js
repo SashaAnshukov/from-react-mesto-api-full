@@ -75,8 +75,8 @@ function App() {
   const [cards, setCards] = useState([]);
   
   useEffect(() => {
-    if (loggedIn) {[
-      api.getInitialCards().then(res => {
+    if (loggedIn) {
+      api.getInitialCards([]).then(res => {
         console.log(res);
         setCards(res);
         setCurrentUser(res);
@@ -84,7 +84,7 @@ function App() {
       .catch(err => {
         console.log (`Ошибка: ${err}`)
       })
-    ]}
+    }
   }, [loggedIn])
 
   function handleCardLike(card) {
