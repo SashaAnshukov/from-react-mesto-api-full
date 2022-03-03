@@ -65,6 +65,7 @@ function App() {
       api.getUserData().then(res => {
         console.log(res.data);
         setCurrentUser(res.data);
+        setEmail(res.data.email);/// в этой строке не уверен
       })
       .catch(err => {
           console.log (`Ошибка: ${err}`)
@@ -76,6 +77,19 @@ function App() {
   
   useEffect(() => {
     if (loggedIn) {
+      api.getInitialCards()
+      .then(([cardsData]) => {
+        console.log(cardsData);
+        setCards(cardsData);
+      })
+      .catch(err => {
+        console.log (`Ошибка: ${err}`)
+      })
+    }
+  }, [loggedIn])
+
+  /*useEffect(() => {
+    if (loggedIn) {
       api.getInitialCards().then(res => {
         console.log(res);
         setCards(res);
@@ -84,7 +98,7 @@ function App() {
         console.log (`Ошибка: ${err}`)
       })
     }
-  }, [loggedIn])
+  }, [loggedIn])*/
 
   function handleCardLike(card) {
     
@@ -180,7 +194,6 @@ function App() {
   function authorization({email, password}) {
     Auth.authorize(email, password)
     .then((data) => {
-      setEmail(data.email);/// в этой строке не уверен
       if (!data){
         setLoggedIn(false);
         setTimeout(setShowToolTip, 1000, true);
