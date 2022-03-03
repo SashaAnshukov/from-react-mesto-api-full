@@ -11,9 +11,9 @@ export class Api {
     getInitialCards() {
         return fetch(`${this._adress}/cards`, {
             method: 'GET',
-            /*headers: {
+            headers: {
                 'Content-Type': 'application/json'
-            },*/
+            },
             credentials: 'include'
         })
         .then(this._checkResponse)
@@ -22,9 +22,9 @@ export class Api {
     getUserData() {
         return fetch(`${this._adress}/users/me`, {
             method: 'GET',
-            /*headers: {
+            headers: {
                 'Content-Type': 'application/json'
-            },*/
+            },
             credentials: 'include'
         })
         .then(this._checkResponse)
