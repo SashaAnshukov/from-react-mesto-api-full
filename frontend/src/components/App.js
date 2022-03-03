@@ -72,6 +72,7 @@ function App() {
   }, [loggedIn])*/
 
   const [cards, setCards] = useState([]);
+  
   useEffect(() => {
     if (loggedIn) {
       api.getFullPageInfo().then(res => {
@@ -80,7 +81,7 @@ function App() {
         setCurrentUser(res);
       })
       .catch(err => {
-          console.log (`Ошибка: ${err}`)
+        console.log (`Ошибка: ${err}`)
       })
     }
   }, [loggedIn])

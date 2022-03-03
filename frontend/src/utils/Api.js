@@ -2,7 +2,9 @@
 export class Api {
     constructor({adress, headers}) {
         this._adress = adress;
-        this._headers = headers;
+        this._headers = {
+            "Content-Type": "application/json",
+        };
     }
 
     getFullPageInfo() {
