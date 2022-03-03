@@ -75,7 +75,7 @@ function App() {
 
   const [cards, setCards] = useState([]);
   
-  useEffect(() => {
+  /*useEffect(() => {
     if (loggedIn) {
       api.getInitialCards()
       .then(([cardsData]) => {
@@ -86,19 +86,19 @@ function App() {
         console.log (`Ошибка: ${err}`)
       })
     }
-  }, [loggedIn])
+  }, [loggedIn])*/
 
-  /*useEffect(() => {
+  useEffect(() => {
     if (loggedIn) {
       api.getInitialCards().then(res => {
-        console.log(res);
-        setCards(res);
+        console.log(res.data);
+        setCards(res.data);
       })
       .catch(err => {
         console.log (`Ошибка: ${err}`)
       })
     }
-  }, [loggedIn])*/
+  }, [loggedIn])
 
   function handleCardLike(card) {
     
