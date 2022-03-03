@@ -75,7 +75,7 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       api.getInitialCards().then(res => {
-        console.log(res);
+        console.log([res]);
         setCards(res);
       })
       .catch(err => {
