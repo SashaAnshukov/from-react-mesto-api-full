@@ -50,7 +50,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   // стэйт проверки токена
-  //const [checkToken, setCheckToken] = useState(false);
+  const [checkToken, setCheckToken] = useState(false);
   // стэйт для получения email пользователя в шапке
   const [email, setEmail] = useState(false);
   // стэйт для модального окна при успешной/не успешной регистрации
@@ -193,10 +193,10 @@ function App() {
     })
   }
 
-  /*useEffect(() =>{
+  useEffect(() =>{
     // если у пользователя есть токен в localStorage,
     // эта функция проверит валидность токена
-    const jwt = localStorage.coockie('jwt');
+    const jwt = req.cookies.jwt;
     if (jwt) {
         setCheckToken(true)
         // проверим токен
@@ -211,16 +211,16 @@ function App() {
       //setEmail(data.email);/// в этой строке не уверен
       navigate('/sign-up');
     }
-  })*/
+  })
 
   /*useEffect(() => {
     api.getUserData()
       .then((res) => {
         if (res) {
           setLoggedIn(true);
-          ///setCheckToken(true);
+          setCheckToken(true);
           navigate('/');
-          //setEmail(res.data.email);
+          setEmail(res.data.email);
         }
       })
       .catch(() => {
@@ -248,7 +248,7 @@ function App() {
           <Route exact path='/sign-in' element={<Login authorization = {authorization}/>} />
           
           <Route exact path='/' element={
-            <ProtectedRoute loggedIn={loggedIn} >
+            <ProtectedRoute loggedIn={loggedIn} checkToken={checkToken}>
               <Main 
                 handleEditAvatarClick = {handleEditAvatarClick}
                 handleEditProfileClick = {handleEditProfileClick}
