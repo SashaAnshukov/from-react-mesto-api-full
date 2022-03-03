@@ -76,7 +76,7 @@ function App() {
     if (loggedIn) {
       api.getFullPageInfo().then(res => {
         console.log(res);
-        setCards([res]);
+        setCards(res);
         setCurrentUser(res);
       })
       .catch(err => {
