@@ -76,7 +76,7 @@ function App() {
     if (loggedIn) {
       api.getFullPageInfo().then(res => {
         console.log(res);
-        setCards(res);
+        setCards([res]);
         setCurrentUser(res);
       })
       .catch(err => {
@@ -189,7 +189,7 @@ function App() {
       }
       else{
         setLoggedIn(true);
-        //setEmail(data.email);/// в этой строке не уверен
+        setEmail(data.email);/// в этой строке не уверен
         navigate('/');
       }
     })
