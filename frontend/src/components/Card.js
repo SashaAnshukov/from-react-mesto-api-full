@@ -49,7 +49,7 @@ function Card({onCardClick, onCardLike, onCardDelete, card}) {
                                     type ="button" aria-label="like" 
                                     /*className="rectangle__mesto-like opacity-like"*/>
                                 </button>
-                                <h3 className="rectangle__mesto-numbersLike">{card.likes.length}</h3>
+                                <h3 className="rectangle__mesto-numbersLike">{card.likes}</h3>
                             </div>
                         </div>
                     </article>
