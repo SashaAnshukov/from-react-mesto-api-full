@@ -1,7 +1,7 @@
 // файл маршрутов карточек
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
-//const auth = require('../middleware/auth');
+const auth = require('../middleware/auth');
 const validateURL = require('../middleware/methods');
 
 const {
@@ -9,7 +9,7 @@ const {
 } = require('../controllers/cards');
 
 // авторизация
-//router.use(auth);
+router.use(auth);
 
 // роуты, требующие авторизации
 router.get('/cards', getCards);
