@@ -35,7 +35,7 @@ function Main(
                 </section>
                 
                 <section className="elements">
-                    {cards.map (card => {
+                    {cards.cards.map (card => {
                         return <Card 
                             onCardClick = {onCardClick} onCardLike = {onCardLike}
                             onCardDelete ={onCardDelete} card={card} key = {card._id}/>

@@ -75,8 +75,8 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       api.getFullPageInfo().then(res => {
-        console.log({res});
-        setCards({res});
+        console.log(res);
+        setCards(res);
         setCurrentUser(res);
       })
       .catch(err => {
