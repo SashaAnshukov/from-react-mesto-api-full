@@ -180,6 +180,7 @@ function App() {
   function authorization({email, password}) {
     Auth.authorize(email, password)
     .then((data) => {
+      setEmail(data.email);/// в этой строке не уверен
       if (!data){
         setLoggedIn(false);
         setTimeout(setShowToolTip, 1000, true);
@@ -190,7 +191,7 @@ function App() {
       }
       else{
         setLoggedIn(true);
-        setEmail(data.email);/// в этой строке не уверен
+
         navigate('/');
       }
     })
