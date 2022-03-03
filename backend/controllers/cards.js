@@ -31,7 +31,6 @@ module.exports.createCard = (request, response, next) => {
   const { name, link } = request.body; // получим из объекта запроса название и ссылку карточки
   const owner = request.user._id;
   return Card.create({ name, link, owner }) // создадим карточку на основе пришедших данных
-    .populate('owner')
     .then((card) => response.status(201).send(card)) // вернём записанные в базу данные
     .catch((error) => {
       if (error.name === 'ValidationError') {
