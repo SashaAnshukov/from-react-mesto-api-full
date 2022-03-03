@@ -10,11 +10,11 @@ export class Api {
     }
 
     getInitialCards() {
-        return fetch(`${this._adress}/cards`, {
+        return fetch(`${this._adress}/cards`, [{
             method: 'GET',
             headers: this._headers,
             credentials: 'include'
-        })
+        }])
         .then(this._checkResponse)
     }
     
