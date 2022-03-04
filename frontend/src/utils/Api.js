@@ -89,8 +89,8 @@ export class Api {
     }
 
     // лайки.постановка/удаление
-    сhangeLikeCard(id, like) {
-        return fetch(`${this._adress}/cards/likes/${id}`, {
+    сhangeLikeCard(card, like) {
+        return fetch(`${this._adress}/cards/${card._id}/likes`, {
             method: like ? 'DELETE' : 'PUT',
             headers: {
                 'Content-Type': 'application/json'
