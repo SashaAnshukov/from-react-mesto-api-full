@@ -223,8 +223,8 @@ function App() {
         if (res) {
           setLoggedIn(true);
           //setCheckToken(true);
-          //navigate('/');
-          setEmail(res.data.email);
+          navigate('/');
+          //setEmail(res.data.email);
         }
       })
       .catch(() => {
