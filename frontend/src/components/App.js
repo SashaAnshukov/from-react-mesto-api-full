@@ -221,7 +221,7 @@ function App() {
     api.getUserData()
       .then((res) => {
         if (res) {
-          //setLoggedIn(true);
+          setLoggedIn(true);
           //setCheckToken(true);
           //navigate('/');
           setEmail(res.data.email);

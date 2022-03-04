@@ -80,6 +80,7 @@ module.exports.login = (request, response, next) => {
           sameSite: 'none' // <-- Выключаем данную опцию
         })
         .send({ data: user.toJSON() });
+
     })
     .catch(next);
 };
