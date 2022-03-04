@@ -90,9 +90,9 @@ function App() {
   function handleCardLike(card) {
     
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
     // Отправляем запрос в API и получаем обновлённые данные карточки
-    api.сhangeLikeCard(card, isLiked).then((newCard) => {
+    api.сhangeLikeCard(card._id, isLiked).then((newCard) => {
       setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
     })
     .catch(err => {
@@ -116,7 +116,7 @@ function App() {
     //console.log(data)
     setisLoadingButton(true)
     api.setUserData(dataUser).then((res) => {
-        setCurrentUser(res);
+        setCurrentUser(res.data);
         closeAllPopups()
         setisLoadingButton(false)
       })
@@ -130,7 +130,7 @@ function App() {
     setisLoadingButton(true)
     // Отправляем запрос в API и обновляем аватар
     api.setUserAvatar(dataAvatar).then((res) => {
-        setCurrentUser(res);
+        setCurrentUser(res.data);
         closeAllPopups()
         setisLoadingButton(false)
       })
