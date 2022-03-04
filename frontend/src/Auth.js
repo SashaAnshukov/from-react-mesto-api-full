@@ -42,6 +42,19 @@ export const authorize = (email, password) => {
     .catch(err => console.log(err))
 };
 
+export const logout = () => {
+    return fetch(`${BASE_URL}/signout`, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: "include",
+    })
+    .then(checkResponse)
+    .catch(err => console.log(err))
+}
+
+
 //Запрос для проверки валидности токена и получения email для вставки в шапку сайта
 /*export const tokenCheck  = (token) => {
     //console.log(token)

@@ -232,13 +232,12 @@ function App() {
       });
   }, []);
 
-  function signOut(name){
-    /*localStorage.removeItem('jwt');
+  function signOut() {
+    //localStorage.removeItem('jwt');
+    Auth.logout();
     navigate('/sign-up');
-    setLoggedIn (false);*/
-    setCookie(name, "", {
-      'max-age': -1
-    })
+    setLoggedIn (false);
+    setCurrentUser('');
   }
 
   return (
