@@ -66,11 +66,10 @@ module.exports.login = (request, response, next) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       // создадим токен
-      const token = jwt.sign({ _id: user._id }, 'super-strong-secret');
-      /*const token = jwt.sign(
-        { _id: user._id },
-        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'
-      );*/
+      //const token = jwt.sign({ _id: user._id }, 'super-strong-secret');
+      const token = jwt.sign(
+        { _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'
+      );
       // вернём токен
       response
         .cookie('jwt', token, {

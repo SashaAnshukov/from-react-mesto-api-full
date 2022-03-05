@@ -1,4 +1,4 @@
-//require('dotenv').config(); //модуль для загрузки env-переменных в Node.js
+require('dotenv').config(); //модуль для загрузки env-переменных в Node.js
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');

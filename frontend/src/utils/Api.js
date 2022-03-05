@@ -108,6 +108,13 @@ export class Api {
         }
         return Promise.reject(`Ошибка ${response.status}`);
     }
+
+    getCrash() {
+        return fetch(`${this._adress}/crash-test`, {
+            method: "GET",
+        })
+        .then(this._checkResponse);
+    }
 }
 
 const api = new Api({
