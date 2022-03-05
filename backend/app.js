@@ -1,5 +1,6 @@
-require('dotenv').config(); //модуль для загрузки env-переменных в Node.js
+require('dotenv').config(); // модуль для загрузки env-переменных в Node.js
 const express = require('express');
+
 const app = express();
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
@@ -8,8 +9,8 @@ const { errors } = require('celebrate');
 const userRoutes = require('./routes/users'); // импортируем роуты пользователя
 const cardRoutes = require('./routes/cards'); // импортируем роуты карточек
 const errorHandler = require('./middleware/error-handler');
-//const cors = require('cors');
-const {requestLogger, errorLogger} = require('./middleware/logger');
+// const cors = require('cors');
+const { requestLogger, errorLogger } = require('./middleware/logger');
 const NotFoundError = require('./errors/not-found-error');
 
 const { PORT = 3000 } = process.env;
@@ -20,14 +21,14 @@ app.use(cookieParser());
 
 app.use(requestLogger);
 
-//крашик
+// крашик
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
 
-/*app.use(cors({
+/* app.use(cors({
   origin = [
     'http://localhost:3000',
     'http://buenosdias.nomoredomains.work',
@@ -42,7 +43,7 @@ app.get('/crash-test', () => {
   optionsSuccessStatus: 204,
   allowedHeaders: ['Content-type', 'origin'],
   credentials: true
-}));*/
+})); */
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
@@ -55,25 +56,27 @@ const allowedCors = [
 
 // безопасность
 app.use((req, res, next) => {
-  const { origin } = req.headers;// Сохраняем источник запроса в переменную origin // проверяем, что источник запроса есть среди разрешённых
+  // Сохраняем источник запроса в переменную origin и
+  // проверяем, что источник запроса есть среди разрешённых
+  const { origin } = req.headers;
   const { method } = req; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
-  const requestHeaders = req.headers["access-control-request-headers"];
+  const requestHeaders = req.headers['access-control-request-headers'];
   // Значение для заголовка Access-Control-Allow-Methods по умолчанию (разрешены все типы запросов)
-  const DEFAULT_ALLOWED_METHODS = "GET,HEAD,PUT,PATCH,POST,DELETE";
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   if (allowedCors.includes(origin)) {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
-    res.header("Access-Control-Allow-Origin", origin);
-    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Credentials', true);
   }
   // Если это предварительный запрос, добавляем нужные заголовки
-  if (method === "OPTIONS") {
+  if (method === 'OPTIONS') {
     // разрешаем кросс-доменные запросы любых типов (по умолчанию)
-    res.header("Access-Control-Allow-Methods", DEFAULT_ALLOWED_METHODS);
+    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     // завершаем обработку запроса и возвращаем результат клиенту
-    res.header("Access-Control-Allow-Headers", requestHeaders);
+    res.header('Access-Control-Allow-Headers', requestHeaders);
     // завершаем обработку запроса и возвращаем результат клиенту
     res.end();
-    return
+    return;
   }
   next();
 });

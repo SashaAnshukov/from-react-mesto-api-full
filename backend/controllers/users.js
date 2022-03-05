@@ -5,6 +5,7 @@ const User = require('../models/user');
 const NotFoundError = require('../errors/not-found-error');
 const BadRequestError = require('../errors/bad-request-error');
 const ConflictError = require('../errors/conflict-error');
+
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 /// возвращает всех пользователей
@@ -66,20 +67,17 @@ module.exports.login = (request, response, next) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       // создадим токен
-      //const token = jwt.sign({ _id: user._id }, 'super-strong-secret');
-      const token = jwt.sign(
-        { _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'
-      );
+      // const token = jwt.sign({ _id: user._id }, 'super-strong-secret');
+      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
       // вернём токен
       response
         .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
           secure: true,
-          sameSite: 'none' // <-- Выключаем данную опцию
+          sameSite: 'none', // <-- Выключаем данную опцию
         })
         .send({ data: user.toJSON() });
-
     })
     .catch(next);
 };
