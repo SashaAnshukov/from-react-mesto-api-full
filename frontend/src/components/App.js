@@ -63,7 +63,7 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       api.getUserData().then(res => {
-        console.log(res.data);
+        //console.log(res.data);
         setCurrentUser(res.data);
         setEmail(res.data.email);/// в этой строке не уверен
       })
@@ -78,7 +78,7 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       api.getInitialCards().then(res => {
-        console.log(res.data);
+        //console.log(res.data);
         setCards(res.data);
       })
       .catch(err => {
