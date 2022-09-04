@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://buenosdias2.nomoredomains.work';
+export const BASE_URL = 'https://from-react-mesto-api-full-b.vercel.app/';
 
 // проверка ответа от сервера
 const checkResponse = (response) => {

@@ -118,7 +118,7 @@ export class Api {
 }
 
 const api = new Api({
-    adress: 'https://buenosdias2.nomoredomains.work',
+    adress: 'https://from-react-mesto-api-full-b.vercel.app',
     //token : '86724e9f-206a-43a9-ab92-a5e8d301d078'
 })
 

@@ -48,10 +48,10 @@ app.get('/crash-test', () => {
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
   'http://localhost:3000',
-  'http://buenosdias.nomoredomains.work',
-  'https://buenosdias.nomoredomains.work',
-  'http://buenosdias.nomoredomains.work',
-  'https://buenosdias2.nomoredomains.work',
+  'http://from-react-mesto-api-full.vercel.app',
+  'https://from-react-mesto-api-full.vercel.app',
+  'http://from-react-mesto-api-full-b.vercel.app/',
+  'https://from-react-mesto-api-full-b.vercel.app/',
 ];
 
 // безопасность
