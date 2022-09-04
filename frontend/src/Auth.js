@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://from-react-mesto-api-full-b.vercel.app/';
+export const BASE_URL = 'https://from-react-mesto-api-full-b.vercel.app';
 
 // проверка ответа от сервера
 const checkResponse = (response) => {

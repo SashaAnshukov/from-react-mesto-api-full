@@ -50,8 +50,8 @@ const allowedCors = [
   'http://localhost:3000',
   'http://from-react-mesto-api-full.vercel.app',
   'https://from-react-mesto-api-full.vercel.app',
-  'http://from-react-mesto-api-full-b.vercel.app/',
-  'https://from-react-mesto-api-full-b.vercel.app/',
+  'http://from-react-mesto-api-full-b.vercel.app',
+  'https://from-react-mesto-api-full-b.vercel.app',
 ];
 
 // безопасность
