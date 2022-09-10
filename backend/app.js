@@ -13,7 +13,7 @@ const errorHandler = require('./middleware/error-handler');
 const { requestLogger, errorLogger } = require('./middleware/logger');
 const NotFoundError = require('./errors/not-found-error');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3006 } = process.env;
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -47,7 +47,7 @@ app.get('/crash-test', () => {
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
-  'http://localhost:3000',
+  'http://localhost:3006',
   'http://buenosdias.nomoredomains.work',
   'https://buenosdias.nomoredomains.work',
   'http://buenosdias.nomoredomains.work',
