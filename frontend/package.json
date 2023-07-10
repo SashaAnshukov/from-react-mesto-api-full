@@ -14,11 +14,11 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "set PORT=3006 && react-scripts start",
+    "start": "set PORT=3003 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && scp -r ./build/* buenosdias2@51.250.25.66:/home/buenosdias2/frontend/build"
+    "deploy": "npm run build && scp -r ./build/*  root@62.173.149.4:/home/from-react-mesto-api-full"
   },
   "eslintConfig": {
     "extends": [
